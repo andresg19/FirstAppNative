@@ -1,5 +1,5 @@
 const initialState = {
-   
+   lists: [],
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {

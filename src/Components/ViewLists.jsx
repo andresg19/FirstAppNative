@@ -2,29 +2,18 @@ import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { styles } from '../Styles/Views';
 import db from '../Config/firebase';
+import { useSelector } from 'react-redux';
+import Table from './Table';
 
 
 export default function Lists () {
-    const collectionRef = db.collection('listas');
-    const data = {
-        costo: 2000,
-        producto: 'peras',
-        stock: 20,
-        veta: 210
-      };
+    const lists = useSelector(state => state.lists);
+    console.log(lists)
     useEffect(() => {
-        collectionRef.add(data)
-  .then(() => {
-    console.log('Documento insertado correctamente');
-  })
-  .catch((error) => {
-    console.error('Error al insertar el documento:', error);
-  });
+     
     }, [])
     return ( 
-        <View style={styles.container}>
-            <Text>Hola!</Text>
-        </View>
+        <Table />
      );
 }
  

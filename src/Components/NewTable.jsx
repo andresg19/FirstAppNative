@@ -1,23 +1,24 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { TextInput } from 'react-native-gesture-handler';
 
-const NewList = () => {
-  let celdas;
-  
+const NewTable = ({products}) => {
   return (
       <View style={styles.table}>
-        <TextInput defaultValue='Proveedor dd/mm/yy'/>
+        <Text>Proveedor Fecha</Text>
       <View style={styles.tableRow}>
-      <Text style={styles.tableHeaderCell}>Producto</Text>
+        <Text style={styles.tableHeaderCell}>Producto</Text>
         <Text style={styles.tableHeaderCell}>Stock</Text>
         <Text style={styles.tableHeaderCell}>$ Costo</Text>
         <Text style={styles.tableHeaderCell}>$ Venta</Text>
       </View>
       <View style={styles.tableRow}>
-        <TextInput style={styles.tableCell}/>
-        <TextInput style={styles.tableCell}/>
-        <TextInput style={styles.tableCell}/>
-        <TextInput style={styles.tableCell}/>
+        {products.length > 0 ? products.map((p) => (
+            
+            <TextInput style={styles.tableCell} placeholder='...' key={p} />
+
+        )): null}
+       
       </View>
     </View>
   );
@@ -49,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NewList;
+export default NewTable;

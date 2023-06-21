@@ -15,7 +15,7 @@ export default function Home({navigation}) {
        <TouchableOpacity onPress={() => navigation.navigate('Mis listas')} style={styles.btn}>
         <Text style={styles.fontsTwo}>Ver Listas</Text>
        </TouchableOpacity>
-       <TouchableOpacity style={styles.btn}>
+       <TouchableOpacity onPress={() => navigation.navigate('Crear lista')} style={styles.btn}>
         <Text style={styles.fontsTwo}>Nueva Lista</Text>
        </TouchableOpacity>
       </View>
