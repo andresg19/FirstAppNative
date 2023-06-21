@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './src/Components/Home';
-import Views from './src/Components/ViewLists';
+import Lists from './src/Components/ViewLists';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,12 +12,12 @@ export default function App() {
     <NavigationContainer>
           <Stack.Navigator>
           <Stack.Screen
-          name="Home"
+          name="Inicio"
           component={Home}
         />
         <Stack.Screen 
-        name="Views" 
-        component={Views} />
+        name="Mis listas" 
+        component={Lists} />
       </Stack.Navigator>
       {/* <Home /> */}
     </NavigationContainer>

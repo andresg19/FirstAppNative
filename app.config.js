@@ -1,4 +1,6 @@
-{
+import 'dotenv/config'
+
+export default{
   "expo": {
     "name": "FirstAppNative",
     "slug": "FirstAppNative",
@@ -25,6 +27,15 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    extra: {
+      apiKey: process.env.API_KEY,
+      authDomain: process.env.AUTHDOM,
+      projectId: process.env.PROJECT_ID,
+      storageBucket: process.env.STORAGE,
+      messagingSenderId: process.env.MESSAGING,
+      appId: process.env.APP_ID,
+      measurementId: process.env.MEASUREMENT,
     }
   }
 }

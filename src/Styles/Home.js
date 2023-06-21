@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
     container: {
         flex: 3,
         height: '100%',
-        backgroundGradient: 'linear-gradient(45dg, #5ffb95, #5cfbb5, #5ffbf1)'
+        backgroundColor:'#A2C0FF'    
     },
     sectionOne: {
       marginTop: '60%',
