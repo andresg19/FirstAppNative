@@ -1,5 +1,5 @@
 import  db  from "../../Config/firebase";
-import { GET_TABLES } from "./actionTypes";
+import { GET_DETAIL, GET_TABLES } from "./actionTypes";
 
 export const insertTable = (headTable, data) => {
  return async function () {
@@ -32,3 +32,19 @@ export const getTables = () => {
    }
        
    };
+
+export const getDetail = (name) => {
+    return async function (dispatch) {
+        try {
+            const request = db.collection('Prueba 2000').doc(name);
+            const result = (await request.get()).data();
+
+            return dispatch({
+                type: GET_DETAIL,
+                payload: result
+            })
+        } catch (error) {
+            console.log('error al traer el detail', error)
+        }
+    }
+}

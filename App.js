@@ -6,6 +6,7 @@ import NewList from './src/Components/NewList';
 import { Provider } from 'react-redux';
 import store from './src/Redux/Store/index';
 import ViewLists from './src/Components/ViewLists';
+import Detail from './src/Components/Detail';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,10 @@ export default function App() {
        <Stack.Screen 
         name="Crear lista" 
         component={NewList} />
+
+      <Stack.Screen 
+        name="Detalle" 
+        component={Detail} />
       </Stack.Navigator>
       
       {/* <Home /> */}

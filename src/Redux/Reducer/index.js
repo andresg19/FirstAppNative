@@ -1,8 +1,9 @@
-import { GET_TABLES } from "../Actions/actionTypes";
+import { GET_DETAIL, GET_TABLES } from "../Actions/actionTypes";
 
 const initialState = {
    lists: [],
-   componentAllLists: []
+   componentAllLists: [],
+   detail: []
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {
@@ -12,6 +13,11 @@ export default function rootReducer(state = initialState, { type, payload }) {
                 ...state,
                 lists: payload[0],
                 componentAllLists: payload[1]
+            }
+        case GET_DETAIL: 
+            return {
+                ...state,
+                detail: payload,
             }
        
         default:
