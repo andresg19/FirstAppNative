@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Button } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { styles } from '../Styles/NewTable';
+import { useDispatch } from 'react-redux';
+import { insertTable } from '../Redux/Actions/actions';
 
 
 export default function NewTable () {
+  const dispatch = useDispatch();
   const [filas, setFilas] = useState([]);
   const [headTable, setHeadTable] = useState('');
-  const [newList, setNewList] = useState([]);
-  console.log(newList)
+  const [newList, setNewList] = useState({});
 
   
   const add = () => {
@@ -25,12 +27,15 @@ export default function NewTable () {
 
   const onChange = (index, field, value) => {
     setNewList((prevTableData) => {
-      const updatedTableData = [...prevTableData];
+      const updatedTableData = {...prevTableData};
       updatedTableData[index] = { ...updatedTableData[index], [field]: value };
       return updatedTableData;
     });
   };
 
+  const createTable = () => {
+    dispatch(insertTable(headTable, newList));
+  }
 
 
   return (
@@ -60,6 +65,7 @@ export default function NewTable () {
       <TouchableOpacity>
         <Text onPress={rest} style={styles.btn}>Quitar fila</Text>
       </TouchableOpacity>
+      <Button title='Crear tabla' onPress={createTable} />
     </View>
   );
 };
