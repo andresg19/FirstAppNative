@@ -2,10 +2,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './src/Components/Home';
-import Lists from './src/Components/ViewLists';
 import NewList from './src/Components/NewList';
 import { Provider } from 'react-redux';
 import store from './src/Redux/Store/index';
+import ViewLists from './src/Components/ViewLists';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +21,7 @@ export default function App() {
         />
         <Stack.Screen 
         name="Mis listas" 
-        component={Lists} />
+        component={ViewLists} />
 
        <Stack.Screen 
         name="Crear lista" 

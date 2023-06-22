@@ -28,7 +28,7 @@ export default function NewTable () {
   const onChange = (index, field, value) => {
     setNewList((prevTableData) => {
       const updatedTableData = {...prevTableData};
-      updatedTableData[index] = { ...updatedTableData[index], [field]: value };
+      updatedTableData[index] = { ...updatedTableData[index], [field]: value};
       return updatedTableData;
     });
   };
@@ -59,11 +59,11 @@ export default function NewTable () {
             </View>
             ))
           } 
-      <TouchableOpacity>
-        <Text onPress={add} style={styles.btn}>Agregar filas {filas.length}</Text>
+      <TouchableOpacity onPress={add}>
+        <Text style={styles.btn}>Agregar filas {filas.length}</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
-        <Text onPress={rest} style={styles.btn}>Quitar fila</Text>
+      <TouchableOpacity onPress={rest}>
+        <Text style={styles.btn}>Quitar fila</Text>
       </TouchableOpacity>
       <Button title='Crear tabla' onPress={createTable} />
     </View>
