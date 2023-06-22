@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const Table = () => {
+export default function Table () {
   return (
       <View style={styles.table}>
         <Text>Proveedor Fecha</Text>
@@ -46,5 +46,3 @@ const styles = StyleSheet.create({
     borderColor: '#000',
   },
 });
-
-export default Table;

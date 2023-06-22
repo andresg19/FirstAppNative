@@ -3,9 +3,11 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { styles } from '../Styles/NewTable';
 
-const NewTable = () => {
+
+export default function NewTable () {
   const [filas, setFilas] = useState([]);
-  console.log(filas, 'filas')
+  const [newList, setNewList] = useState([]);
+  console.log(newList)
 
   
   const add = () => {
@@ -17,7 +19,17 @@ const NewTable = () => {
   const rest = () => {
       const pop = filas.slice(0, -1);
       setFilas(pop);
+      filas.length === newList.length ? newList.pop() : null;
   };
+
+  const onChange = (index, field, value) => {
+    setNewList((prevTableData) => {
+      const updatedTableData = [...prevTableData];
+      updatedTableData[index] = { ...updatedTableData[index], [field]: value };
+      return updatedTableData;
+    });
+  };
+
 
 
   return (
@@ -33,20 +45,20 @@ const NewTable = () => {
        :
        filas.map((f, index) => (
          <View style={styles.tableRow} key={index}>
-            <TextInput style={styles.tableCell} nativeID='product' placeholder='...' />
-            <TextInput style={styles.tableCell} nativeID='stock' placeholder='...' />
-            <TextInput style={styles.tableCell} nativeID='costo' placeholder='...' />
-            <TextInput style={styles.tableCell} nativeID='venta' placeholder='...' />
+            <TextInput style={styles.tableCell} value={newList.producto} onChangeText={(text) => onChange(index, 'producto', text)} placeholder='...' />
+            <TextInput style={styles.tableCell} value={newList.stock}  onChangeText={(text) => onChange(index, 'stock', text)}  placeholder='...' />
+            <TextInput style={styles.tableCell} value={newList.costo}   onChangeText={(text) => onChange(index, 'costo', text)}  placeholder='...' />
+            <TextInput style={styles.tableCell} value={newList.venta}   onChangeText={(text) => onChange(index, 'venta', text)}  placeholder='...' />
             </View>
             ))
           } 
       <TouchableOpacity>
         <Text onPress={add} style={styles.btn}>Agregar filas {filas.length}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
         <Text onPress={rest} style={styles.btn}>Quitar fila</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-
-export default NewTable;
