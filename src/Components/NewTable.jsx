@@ -6,6 +6,7 @@ import { styles } from '../Styles/NewTable';
 
 export default function NewTable () {
   const [filas, setFilas] = useState([]);
+  const [headTable, setHeadTable] = useState('');
   const [newList, setNewList] = useState([]);
   console.log(newList)
 
@@ -34,6 +35,7 @@ export default function NewTable () {
 
   return (
       <View style={styles.table}>
+        <TextInput value={headTable} onChangeText={(text) => setHeadTable(text)} placeholder='nombre de lista y fecha'/>
       <View style={styles.tableRow}>
         <Text style={styles.tableHeaderCell}>Producto</Text>
         <Text style={styles.tableHeaderCell}>Stock</Text>
