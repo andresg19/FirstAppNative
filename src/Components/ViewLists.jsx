@@ -1,26 +1,28 @@
 import React, { useEffect } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import db from '../Config/firebase';
+import { Button, Text, TouchableOpacity, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import Table from './Table';
 import { getTables } from '../Redux/Actions/actions';
 import { styles } from '../Styles/Lists';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 export default function ViewLists () {
-    const nameLists = useSelector(state => state.componentAllLists);
+    const nameLists = useSelector(state => state.componentAllLists[0]);
+    console.log(nameLists)
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getTables());
        }, [])
     return ( 
-       <View style={styles.container}>
-        {nameLists.map((name, i) => (
-            <TouchableOpacity style={styles.btn} key={i}>
-                <Text>{name}</Text>
-            </TouchableOpacity>
-        ))}
-       </View>
+        <View style={styles.container}>
+       <ScrollView contentContainerStyle={styles.scrollContent}>
+        { nameLists ? nameLists.map((name, i) => (
+            <View key={i} style={styles.content}> 
+            <Button style={styles.btn} title={`${name}`} />
+            </View>
+        )) : null}
+       </ScrollView>
+        </View>
      );
 }
  
