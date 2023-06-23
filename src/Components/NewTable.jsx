@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Button } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { styles } from '../Styles/NewTable';
 import { useDispatch } from 'react-redux';
-import { insertTable } from '../Redux/Actions/actions';
+import { getTables, insertTable } from '../Redux/Actions/actions';
 
 
 export default function NewTable () {
@@ -35,6 +35,7 @@ export default function NewTable () {
 
   const createTable = () => {
     dispatch(insertTable(headTable, newList));
+    dispatch(getTables());
   }
 
 

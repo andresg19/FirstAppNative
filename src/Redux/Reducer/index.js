@@ -1,4 +1,4 @@
-import { GET_DETAIL, GET_TABLES } from "../Actions/actionTypes";
+import { CLEAR_DETAIL, GET_DETAIL, GET_TABLES } from "../Actions/actionTypes";
 
 const initialState = {
    lists: [],
@@ -18,6 +18,11 @@ export default function rootReducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 detail: payload,
+            }
+        case CLEAR_DETAIL:
+            return {
+                ...state,
+                detail: [],
             }
        
         default:
